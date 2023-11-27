@@ -2,6 +2,8 @@ package com.example.entrytestspringbootapida.api.controller;
 
 import com.example.entrytestspringbootapida.api.model.Task;
 import com.example.entrytestspringbootapida.service.TaskService;
+import org.apache.coyote.BadRequestException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +23,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public Task CreateTask(@RequestBody Task task) {
+    public Task CreateTask(@RequestBody Task task) throws BadRequestException {
         return taskService.CreateTask(task);
     }
 

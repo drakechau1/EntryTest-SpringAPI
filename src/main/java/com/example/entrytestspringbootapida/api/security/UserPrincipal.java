@@ -1,13 +1,11 @@
 package com.example.entrytestspringbootapida.api.security;
 
-import com.auth0.jwt.interfaces.Claim;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
 import java.util.List;
 
 @Getter
@@ -15,27 +13,30 @@ import java.util.List;
 public class UserPrincipal implements UserDetails {
     private Long userId;
     private String username;
-    private Collection<? extends GrantedAuthority> authorities;
+    @JsonIgnore
+    private String password;
+    private List<SimpleGrantedAuthority> authorities;
 
-    public UserPrincipal(Long userId, String username, Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(Long userId, String username, String password, List<SimpleGrantedAuthority> authorities) {
         this.userId = userId;
         this.username = username;
+        this.password = password;
         this.authorities = authorities;
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+    public List<SimpleGrantedAuthority> getAuthorities() {
+        return authorities;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override

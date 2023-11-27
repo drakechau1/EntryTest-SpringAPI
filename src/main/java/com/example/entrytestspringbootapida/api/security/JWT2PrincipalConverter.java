@@ -12,6 +12,7 @@ public class JWT2PrincipalConverter {
         return new UserPrincipal(
                 Long.valueOf(jwt.getSubject()),
                 jwt.getClaim("username").asString(),
+                jwt.getClaim("password").asString(),
                 extractAuthoritiesFromClaim(jwt));
     }
 

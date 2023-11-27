@@ -1,4 +1,4 @@
-package com.example.entrytestspringbootapida.TaskRepository;
+package com.example.entrytestspringbootapida.repository;
 
 import com.example.entrytestspringbootapida.api.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
